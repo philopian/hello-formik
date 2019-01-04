@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { withFormik, Form } from "formik";
+import { withFormik, Form, Field } from "formik";
 
 import "./styles.css";
 
@@ -8,20 +8,13 @@ const App = ({ values, handleChange }) => (
   <div className="App">
     <p>Hello Formik</p>
     <Form>
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={values.email}
-        onChange={handleChange}
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        value={values.password}
-        onChange={handleChange}
-      />
+      <Field component="select" name="color">
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+      </Field>
+      <Field type="email" name="email" placeholder="Email" />
+      <Field type="password" name="password" placeholder="Password" />
       <button type="submit">Submit</button>
     </Form>
   </div>
