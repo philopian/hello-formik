@@ -11,3 +11,7 @@ form {
 form input {
   width: 200px;
 }
+
+.error {
+  color: red;
+}
