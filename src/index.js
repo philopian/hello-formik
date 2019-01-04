@@ -78,9 +78,10 @@ const FormikApp = withFormik({
   }
 })(App);
 
+const props = { email: "hello@there.com", password: "123456789" };
 const rootElement = document.getElementById("root");
 ReactDOM.render(
-  <FormikApp email="hello@there.com" password="123456789" />,
+  <FormikApp {...props} />,
   // <FormikApp />,
   rootElement
 );
