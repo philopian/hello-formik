@@ -5,7 +5,7 @@ import * as yup from "yup";
 
 import "./styles.css";
 
-const App = ({ values, errors, touched }) => (
+const App = ({ values, errors, touched, isSubmitting }) => (
   <div className="App">
     <p>Hello Formik</p>
     <Form>
@@ -37,7 +37,9 @@ const App = ({ values, errors, touched }) => (
         <Field type="checkbox" name="newsletter" checked={values.newsletter} />
       </label>
       <br />
-      <button type="submit">Submit</button>
+      <button type="submit" disabled={isSubmitting}>
+        Submit
+      </button>
     </Form>
   </div>
 );
@@ -61,13 +63,24 @@ const FormikApp = withFormik({
       .min(9, "Password need to be at least 9 charaters or longer")
       .required("Password is required")
   }),
-  handleSubmit(values) {
+  handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
+    setTimeout(() => {
+      console.log("..waiting");
+      // fake an email already taken
+      if (values.email === "hello@there.com") {
+        setErrors({ email: "That email is already taken" });
+      } else {
+        resetForm();
+      }
+      setSubmitting(false);
+    }, 1000);
     console.log("[do something with]", values);
   }
 })(App);
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
-  <FormikApp email="hello@there.com" password="1234567" />,
+  <FormikApp email="hello@there.com" password="123456789" />,
+  // <FormikApp />,
   rootElement
 );
