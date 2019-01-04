@@ -2,3 +2,12 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+form {
+  border: solid 1px black;
+  text-align: center;
+}
+
+form input {
+  width: 200px;
+}
