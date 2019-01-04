@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { withFormik } from "formik";
+import { withFormik, Form } from "formik";
 
 import "./styles.css";
 
-const App = ({ values, handleChange, handleSubmit }) => (
+const App = ({ values, handleChange }) => (
   <div className="App">
     <p>Hello Formik</p>
-    <form onSubmit={handleSubmit}>
+    <Form>
       <input
         type="email"
         name="email"
@@ -23,7 +23,7 @@ const App = ({ values, handleChange, handleSubmit }) => (
         onChange={handleChange}
       />
       <button type="submit">Submit</button>
-    </form>
+    </Form>
   </div>
 );
 
